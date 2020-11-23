@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上装</title>
+    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="js/colorpicker.js"></script>
+    <link rel="stylesheet" href="css/colorpicker.css" type="text/css" />
+    <style type="text/css" media="screen">
+        .colorwell {
+            border: 2px solid #fff;
+            width: 6em;
+            text-align: center;
+            cursor: pointer;
+        }
+        body .colorwell-selected {
+            border: 2px solid #000;
+            font-weight: bold;
+        }
+    </style>
+    <script type="text/javascript">
+        function sub() {
+            let style = document.getElementsByName("style")
+            for (let i = 0; i < style.length; i++) {
+                if (style[i].checked) {
+                    style = style[i].value
+                    break
+                }
+            }
+            let data = {
+                "style":style,
+                "type":document.getElementById("type").value,
+                "mainColor":document.getElementById("main_color").value,
+                "assistantColor":document.getElementById("assistant_color").value,
+                "length":document.getElementById("length").value,
+                "price":document.getElementById("price").value
+            }
+            $.ajax({
+                type:"POST",
+                data:JSON.stringify(data),
+                url: "http://localhost/bottoms",
+                dataType:"JSON",
+                contentType: "application/json",
+                success:function (result) {
+                    console.log(result)
+                }
+            })
+        }
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            $('#demo').hide();
+            var f = $.farbtastic('#picker');
+            var p = $('#picker').css('opacity', 0.25);
+            var selected;
+            $('.colorwell')
+                .each(function () { f.linkTo(this); $(this).css('opacity', 0.75); })
+                .focus(function() {
+                    if (selected) {
+                        $(selected).css('opacity', 0.75).removeClass('colorwell-selected');
+                    }
+                    f.linkTo(this);
+                    p.css('opacity', 1);
+                    $(selected = this).css('opacity', 1).addClass('colorwell-selected');
+                });
+        });
+    </script>
+</head>
+<body>
+    风格
+    <div>
+        潮流：<input name="style" value="1" type="radio" checked>
+        型男：<input name="style" value="2" type="radio">
+        新男：<input name="style" value="3" type="radio">
+        文艺：<input name="style" value="4" type="radio">
+        绅士：<input name="style" value="5" type="radio">
+        土豪：<input name="style" value="6" type="radio">
+    </div>
+    <div>
+        类型:<input id="type">
+        长度:<input id="length">
+        价格:<input id="price">
+        肩宽:<input id="shoulderWidth">
+        袖长:<input id="outsideSleeve">
+    </div>
+    <div>
+        季节
+        <div>
+            春：<input name="season" value="1" type="radio" checked>
+            夏：<input name="season" value="2" type="radio">
+            秋：<input name="season" value="3" type="radio">
+            冬：<input name="season" value="4" type="radio">
+        </div>
+    </div>
+    <div id="picker" style="float: right;"></div>
+    <div>
+        主色调:<input type="text" id="main_color" class="colorwell" value="#123456" />
+    </div>
+    <div>
+        副色调:<input type="text" id="assistant_color" class="colorwell" value="#123456" />
+    </div>
+    <div>
+        连帽
+        <div>
+            是：<input name="hooded" value=true type="radio">
+            否：<input name="hooded" value=false type="radio">
+        </div>
+    </div>
+    <div>
+        <button onclick="sub()">保存</button>
+    </div>
+</body>
+</html>

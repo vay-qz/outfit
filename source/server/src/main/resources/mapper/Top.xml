@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="pers.vay.outfit.dao.TopsDao">
+    <insert id="insert">
+        insert into tops (style, type, main_color, assistant_color, length, price ) values
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.style}, #{item.type}, #{item.mainColor}, #{item.assistantColor}, #{item.length}, #{item.price}
+        </foreach>
+    </insert>
+</mapper>

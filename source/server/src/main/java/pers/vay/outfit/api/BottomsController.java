@@ -8,7 +8,6 @@ import pers.vay.outfit.dao.BottomsDao;
 import pers.vay.outfit.vo.Bottoms;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;

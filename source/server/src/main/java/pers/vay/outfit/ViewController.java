@@ -6,9 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ViewController {
 
-    @RequestMapping("index")
+    @RequestMapping("bottom")
     public String index() {
-        return "tt.html";
+        return "bottom.html";
+    }
+
+    @RequestMapping("top")
+    public String top() {
+        return "top.html";
     }
 
 }
