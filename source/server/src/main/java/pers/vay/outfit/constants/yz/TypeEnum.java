@@ -7,9 +7,15 @@ package pers.vay.outfit.constants.yz;
 public enum TypeEnum {
 
     /**
-     * 潮流
+     * 男生类型
      */
-    TREND(1, "潮流");
+    TREND(1, "潮流"),
+    SPORTSMAN(2, "型男"),
+    JAPAN_KOREA(3, "日韩"),
+    ART(4, "艺术"),
+    GENTLEMAN(5, "绅士"),
+    LOCAL_TYCOON(6, "土豪")
+    ;
 
     private int value;
 
