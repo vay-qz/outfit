@@ -1,56 +1,67 @@
 <template>
   <div>
     <form>
-      <div>
+      <div class="row">
         <label for="style">风格</label>
-        <div v-for="item in items" :key="item.valueOf()" id="style">
+      </div>
+      <div class="row" >
+        <div v-for="item in items" :key="item.valueOf()" id="style" class="col-md-1">
           <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" checked>
           <label class="form-check-label" for="exampleRadios1">
             {{ item }}
           </label>
         </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="type">类型</label>
-        <input type="text" class="form-control" id="type">
+      <div class="row mt-3">
+        <div class="col">
+          <label for="type" >类型</label>
+          <input type="text" class="form-control" id="type">
+        </div>
+        <div class="col">
+          <label for="length">长度</label>
+          <input type="text" class="form-control" id="length">
+        </div>
+        <div class="col">
+          <label for="price">价格</label>
+          <input type="text" class="form-control" id="price">
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="length">长度</label>
-        <input type="text" class="form-control" id="length">
+      <div class="row mt-3">
+        <div class="col">
+          <label for="shoulderWidth">肩宽</label>
+          <input type="text" class="form-control" id="shoulderWidth">
+        </div>
+        <div class="col">
+          <label for="outsideSleeve">袖长</label>
+          <input type="text" class="form-control" id="outsideSleeve">
+        </div>
       </div>
-      <div class="form-group col-md-6">
-        <label for="price">价格</label>
-        <input type="text" class="form-control" id="price">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="shoulderWidth">肩宽</label>
-        <input type="text" class="form-control" id="shoulderWidth">
-      </div>
-      <div class="form-group col-md-6">
-        <label for="outsideSleeve">袖长</label>
-        <input type="text" class="form-control" id="outsideSleeve">
-      </div>
-      <div>
+      <div class="row mt-3">
         <label for="season">季节</label>
-        <div v-for="item in season" :key="item.valueOf()" id="season">
+      </div>
+      <div class="row">
+        <div v-for="item in season" :key="item.valueOf()" id="season" class="col-md-1">
           <input class="form-check-input" type="radio" name="exampleRadios" checked>
           <label class="form-check-label" for="exampleRadios1">
             {{ item }}
           </label>
         </div>
       </div>
-      <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitch1">
-        <label class="custom-control-label" for="customSwitch1">连帽</label>
+      <div class="row mt-3">
+        <div class="custom-control custom-switch col">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label" for="customSwitch1">连帽</label>
+        </div>
+        <div class="col">
+          <label for="mColor">主色调</label>
+          <colorPicker v-model="main_color" id="mColor"></colorPicker>
+        </div>
+        <div class="col">
+          <label for="aColor">副色调</label>
+          <colorPicker v-model="assistant_color" id="aColor"></colorPicker>
+        </div>
       </div>
-      <div>
-        <label for="mColor">主色调</label>
-        <colorPicker v-model="main_color" id="mColor"></colorPicker>
-      </div>
-      <div>
-        <label for="aColor">副色调</label>
-        <colorPicker v-model="assistant_color" id="aColor"></colorPicker>
-      </div>
+      <button class="btn btn-primary" type="submit" v-on:submit="submit">保存</button>
     </form>
   </div>
 </template>
@@ -79,6 +90,9 @@ export default {
       }).then(function (response) {
         that.items = response.data
       })
+    },
+    submit() {
+
     }
   }
 }
