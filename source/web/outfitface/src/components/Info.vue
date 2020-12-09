@@ -49,12 +49,10 @@
             <label class="custom-control-label" for="customSwitch1">连帽</label>
           </div>
           <div class="col">
-            <label for="mColor">主色调</label>
-            <colorPicker v-model="main_color" id="mColor"></colorPicker>
+            主色调 <colorPicker v-model="main_color" id="mColor"></colorPicker>
           </div>
           <div class="col">
-            <label for="aColor">副色调</label>
-            <colorPicker v-model="assistant_color" id="aColor"></colorPicker>
+            副色调 <colorPicker v-model="assistant_color" id="aColor"></colorPicker>
           </div>
         </div>
         <button class="btn btn-primary" type="submit" v-on:submit="submit">保存</button>
@@ -98,8 +96,7 @@ export default {
 
 <style>
 .infoStyle {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 100px;
 }
 .out {
   position: absolute;
